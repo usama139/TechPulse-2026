@@ -7,6 +7,10 @@
     {
       "source": "/uploads/:path*",
       "destination": "https://techpulse-backend-production.up.railway.app/uploads/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
