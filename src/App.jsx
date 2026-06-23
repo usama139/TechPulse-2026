@@ -5,19 +5,20 @@ const EVENT_START = new Date("2026-07-09T23:59:59");
 const EVENT_DATES = "10 & 11 July 2026";
 
 const COMPETITIONS = [
-  { id: "ms-word", name: "MS Word", tagline: "Design & formatting", icon: "ti-file-type-doc", type: "fixed", fee: 200 },
-  { id: "ms-excel", name: "MS Excel", tagline: "Data & formula showdown", icon: "ti-file-type-xls", type: "fixed", fee: 200 },
-  { id: "typing-test", name: "Typing test", tagline: "20-min speed & accuracy", icon: "ti-keyboard", type: "fixed", fee: 200 },
-  { id: "web-dev", name: "Web development", tagline: "Layout & design battle", icon: "ti-world-www", type: "fixed", fee: 200 },
-  { id: "cpp", name: "C++ programming", tagline: "Speed & logic challenge", icon: "ti-brand-cpp", type: "fixed", fee: 200 },
-  { id: "video-advert", name: "Video advertising", tagline: "Creativity & editing, teams up to 3", icon: "ti-video", type: "group", feePerMember: 200, maxMembers: 3 },
-  { id: "ict-quiz", name: "ICT quiz", tagline: "Computer knowledge test", icon: "ti-device-laptop", type: "fixed", fee: 200 },
-  { id: "english-quiz", name: "English quiz", tagline: "Grammar & vocabulary", icon: "ti-abc", type: "fixed", fee: 200 },
+  { id: "ms-word", name: "MS Word", tagline: "Design & formatting", icon: "ti-file-type-doc", emoji: "📝", type: "fixed", fee: 200 },
+  { id: "ms-excel", name: "MS Excel", tagline: "Data & formula showdown", icon: "ti-file-type-xls", emoji: "📊", type: "fixed", fee: 200 },
+  { id: "typing-test", name: "Typing test", tagline: "20-min speed & accuracy", icon: "ti-keyboard", emoji: "⌨️", type: "fixed", fee: 200 },
+  { id: "web-dev", name: "Web development", tagline: "Layout & design battle", icon: "ti-world-www", emoji: "💻", type: "fixed", fee: 200 },
+  { id: "cpp", name: "C++ programming", tagline: "Speed & logic challenge", icon: "ti-brand-cpp", emoji: "🧑‍💻", type: "fixed", fee: 200 },
+  { id: "video-advert", name: "Video advertising", tagline: "Creativity & editing, teams up to 3", icon: "ti-video", emoji: "🎬", type: "group", feePerMember: 200, maxMembers: 3 },
+  { id: "ict-quiz", name: "ICT quiz", tagline: "Computer knowledge test", icon: "ti-device-laptop", emoji: "🖥️", type: "fixed", fee: 200 },
+  { id: "english-quiz", name: "English quiz", tagline: "Grammar & vocabulary", icon: "ti-abc", emoji: "📖", type: "fixed", fee: 200 },
   {
     id: "pubg",
     name: "PUBG mobile",
     tagline: "Mobile gaming showdown",
     icon: "ti-device-gamepad-2",
+    emoji: "🎮",
     type: "squad",
     squadOptions: [
       { id: "solo", label: "Solo (1 player)", players: 1, fee: 200 },
@@ -30,6 +31,7 @@ const COMPETITIONS = [
     name: "Free fire",
     tagline: "Ultimate mobile",
     icon: "ti-flame",
+    emoji: "🔥",
     type: "squad",
     squadOptions: [
       { id: "solo", label: "Solo (1 player)", players: 1, fee: 200 },
@@ -38,6 +40,20 @@ const COMPETITIONS = [
     ],
   },
 ];
+
+// Each competition's syllabus / detail note shown after selecting it in the registration form
+const COMPETITION_SYLLABUS = {
+  "ms-word": "Document formatting, tables, mail merge & page layout tasks under a time limit.",
+  "ms-excel": "Formulas, functions, formatting and quick data-handling tasks.",
+  "typing-test": "20-minute timed typing round, scored on speed (WPM) and accuracy.",
+  "web-dev": "Build a webpage from a given brief using HTML & CSS within the time limit.",
+  cpp: "Logic-building and problem-solving tasks judged on speed and correct output.",
+  "video-advert": "Create and edit a short promotional video around a given theme, teams of up to 3.",
+  "ict-quiz": "General computer & ICT knowledge — hardware, software, internet basics.",
+  "english-quiz": "Grammar, vocabulary and comprehension based quiz round.",
+  pubg: "Mobile PUBG matches in solo, duo, or squad mode — bracket shared after registration.",
+  "free-fire": "Mobile Free Fire matches in solo, duo, or squad mode — bracket shared after registration.",
+};
 
 const SUPERVISOR = {
   name: "Usama Ali",
@@ -442,7 +458,7 @@ function CompetitionsSection({ setPage, isMobile }) {
         {COMPETITIONS.map((c) => (
           <div key={c.id} className="compCardHover" style={styles.compCardLarge} onClick={() => setPage("register")}>
             <div style={styles.compIconWrapLarge}>
-              <i className={`ti ${c.icon}`} style={styles.compIconLarge} aria-hidden="true" />
+              <span style={{ fontSize: 30, lineHeight: 1 }}>{c.emoji}</span>
             </div>
             <div style={styles.compNameLarge}>{c.name}</div>
             <div style={styles.compTaglineLarge}>{c.tagline}</div>
@@ -489,22 +505,22 @@ function DetailsSection({ isMobile }) {
     <section style={styles.detailsSection}>
       <h2 style={{ ...styles.sectionTitle, fontSize: isMobile ? 22 : 30 }}>Event details</h2>
       <div style={{ ...styles.detailsGrid, gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(280px, 1fr))" }}>
-        <DetailRow icon="ti-calendar-event" label="Dates" value={EVENT_DATES} />
-        <DetailRow icon="ti-map-pin" label="Venue" value="Malik Jamat Khana, Dholnabad, Mirpurkhas" />
-        <DetailRow icon="ti-cash" label="Registration fee" value="From Rs 200 per competition" />
-        <DetailRow icon="ti-phone" label="Contact" value="0312 3795549" />
-        <DetailRow icon="ti-world" label="Website" value="symecs-institute.vercel.app" link="https://symecs-institute.vercel.app/" />
-        <DetailRow icon="ti-brand-facebook" label="Facebook" value="facebook.com/share/1Czv2KfkS1" link="https://www.facebook.com/share/1Czv2KfkS1/" />
+        <DetailRow emoji="📅" label="Dates" value={EVENT_DATES} />
+        <DetailRow emoji="📍" label="Venue" value="Malik Jamat Khana, Dholnabad, Mirpurkhas" />
+        <DetailRow emoji="💵" label="Registration fee" value="From Rs 200 per competition" />
+        <DetailRow emoji="📞" label="Contact" value="0312 3795549" />
+        <DetailRow emoji="🌐" label="Website" value="symecs-institute.vercel.app" link="https://symecs-institute.vercel.app/" />
+        <DetailRow emoji="📘" label="Facebook" value="facebook.com/share/1Czv2KfkS1" link="https://www.facebook.com/share/1Czv2KfkS1/" />
       </div>
     </section>
   );
 }
 
-function DetailRow({ icon, label, value, link }) {
+function DetailRow({ emoji, label, value, link }) {
   const content = (
     <>
       <div style={styles.detailIconWrap}>
-        <i className={`ti ${icon}`} style={styles.detailIcon} aria-hidden="true" />
+        <span style={{ fontSize: 20, lineHeight: 1 }}>{emoji}</span>
       </div>
       <div>
         <div style={styles.detailLabel}>{label}</div>
@@ -550,8 +566,9 @@ function Register({
           <p style={styles.bodyText}>
             Thanks, {form.fullName || "competitor"}. Your entry for{" "}
             {selectedCount} competition{selectedCount === 1 ? "" : "s"} has
-            been recorded along with your payment screenshot. Our team will
-            confirm your slot on 03123795549.
+            been recorded along with your payment screenshot. Competition
+            details and syllabus will be sent to {form.contact || "your contact number"}.
+            Our team will confirm your slot on 03123795549.
           </p>
           <button style={styles.primaryBtn} onClick={() => setPage("home")}>
             Back to home
@@ -613,7 +630,7 @@ function Register({
                       onChange={() => toggleComp(c)}
                       style={styles.checkbox}
                     />
-                    <i className={`ti ${c.icon}`} style={styles.checkIcon} aria-hidden="true" />
+                    <span style={styles.checkEmoji}>{c.emoji}</span>
                     <span style={{ flex: 1 }}>{c.name}</span>
                     <span style={styles.checkFee}>
                       {c.type === "squad"
@@ -653,6 +670,17 @@ function Register({
                         </button>
                       ))}
                       <span style={styles.groupFeeNote}>Rs {c.feePerMember} x {sel.members} = Rs {sel.fee}</span>
+                    </div>
+                  )}
+
+                  {sel && (
+                    <div style={styles.syllabusNote}>
+                      <span style={styles.syllabusIcon}>ℹ️</span>
+                      <span>
+                        <strong>{c.name}:</strong> {COMPETITION_SYLLABUS[c.id]} Full
+                        details and syllabus will be shared on the contact number
+                        you provide below.
+                      </span>
                     </div>
                   )}
                 </div>
@@ -720,6 +748,7 @@ function Footer({ isMobile }) {
         <span style={{ fontSize: isMobile ? 12.5 : 13.5 }}>{INSTITUTE_NAME}</span>
       </div>
       <div style={styles.footerTag}>Your future, our mission.</div>
+      <div style={styles.footerCredit}>Developed by Usama Ali</div>
     </footer>
   );
 }
@@ -1157,6 +1186,7 @@ const styles = {
   },
   checkbox: { width: 16, height: 16 },
   checkIcon: { fontSize: 17, color: "#8a6312" },
+  checkEmoji: { fontSize: 19, lineHeight: 1 },
   checkFee: { color: "#8a6312", fontSize: 12.5, fontWeight: 700 },
   squadOptionsRow: {
     display: "flex",
@@ -1187,6 +1217,19 @@ const styles = {
   },
   groupLabel: { fontSize: 12.5, color: "#6b7794", fontWeight: 600 },
   groupFeeNote: { fontSize: 12.5, color: "#8a6312", fontWeight: 700, marginLeft: 6 },
+  syllabusNote: {
+    display: "flex",
+    alignItems: "flex-start",
+    gap: 8,
+    fontSize: 12.5,
+    color: "#3a4a63",
+    background: "#fdf3e0",
+    borderRadius: 10,
+    padding: "9px 12px",
+    margin: "0 12px 12px",
+    lineHeight: 1.5,
+  },
+  syllabusIcon: { fontSize: 14, flexShrink: 0, marginTop: 1 },
   payBox: {
     background: CREAM,
     borderRadius: 14,
@@ -1256,4 +1299,5 @@ const styles = {
     boxShadow: "0 2px 4px rgba(0,0,0,0.3)",
   },
   footerTag: { color: GOLD, fontWeight: 600, fontSize: 12.5, letterSpacing: 0.5, textTransform: "uppercase" },
+  footerCredit: { color: "#8092b3", fontSize: 11.5, marginTop: 10, letterSpacing: 0.3 },
 };
