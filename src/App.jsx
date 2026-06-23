@@ -8,7 +8,7 @@ const COMPETITIONS = [
   { id: "ms-word", name: "MS Word", tagline: "Design & formatting", icon: "ti-file-type-doc", emoji: "📝", type: "fixed", fee: 200 },
   { id: "ms-excel", name: "MS Excel", tagline: "Data & formula showdown", icon: "ti-file-type-xls", emoji: "📊", type: "fixed", fee: 200 },
   { id: "typing-test", name: "Typing test", tagline: "20-min speed & accuracy", icon: "ti-keyboard", emoji: "⌨️", type: "fixed", fee: 200 },
-  { id: "web-dev", name: "Web development", tagline: "Layout & design battle", icon: "ti-world-www", emoji: "💻", type: "fixed", fee: 200 },
+  { id: "web-dev", name: "Web designing", tagline: "Layout & design battle", icon: "ti-world-www", emoji: "💻", type: "fixed", fee: 200 },
   { id: "cpp", name: "C++ programming", tagline: "Speed & logic challenge", icon: "ti-brand-cpp", emoji: "🧑‍💻", type: "fixed", fee: 200 },
   { id: "video-advert", name: "Video advertising", tagline: "Creativity & editing, teams up to 3", icon: "ti-video", emoji: "🎬", type: "group", feePerMember: 200, maxMembers: 3 },
   { id: "ict-quiz", name: "ICT quiz", tagline: "Computer knowledge test", icon: "ti-device-laptop", emoji: "🖥️", type: "fixed", fee: 200 },
